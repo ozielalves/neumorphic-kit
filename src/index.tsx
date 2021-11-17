@@ -1,4 +1,5 @@
 import './assets/css/tailwind.css';
 
-export { Button } from './components/Button';
-export { Switch } from './components/Switch';
+export * from './components/Button';
+export * from './components/Checkbox';
+export * from './components/Switch';

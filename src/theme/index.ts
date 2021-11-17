@@ -11,10 +11,10 @@ export const theme = {
   },
   shadow: {
     get default() {
-      return `.3rem .3rem .6rem var(${theme.colors.greyLight2}), -.2rem -.2rem .5rem var(${theme.colors.white})`;
+      return `.3rem .3rem .6rem ${theme.colors.greyLight2}, -.2rem -.2rem .5rem ${theme.colors.white}`;
     },
-    get linear() {
-      return `inset .2rem .2rem .5rem var(${theme.colors.greyLight2}), inset -.2rem -.2rem .5rem var(${theme.colors.white})`;
+    get inner() {
+      return `inset .2rem .2rem .5rem ${theme.colors.greyLight2}, inset -.2rem -.2rem .5rem ${theme.colors.white}`;
     },
   },
 };

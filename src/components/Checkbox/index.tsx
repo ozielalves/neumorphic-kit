@@ -1,15 +1,17 @@
 import React, { InputHTMLAttributes } from 'react';
+import { MdDone } from 'react-icons/md';
+
 import { Container } from './styles';
 
-export interface SwitchProps extends InputHTMLAttributes<HTMLInputElement> {
+export interface CheckboxProps extends InputHTMLAttributes<HTMLInputElement> {
   active?: boolean;
 }
 
-export const Switch = ({
+export const Checkbox = ({
   active = false,
   id = 'checkbox',
   ...rest
-}: SwitchProps) => {
+}: CheckboxProps) => {
   const [isActive, setIsActive] = React.useState(active);
 
   return (
@@ -21,7 +23,9 @@ export const Switch = ({
         onChange={() => setIsActive(prev => !prev)}
         {...rest}
       />
-      <label htmlFor={id}></label>
+      <label htmlFor={id}>
+        <MdDone />
+      </label>
     </Container>
   );
 };

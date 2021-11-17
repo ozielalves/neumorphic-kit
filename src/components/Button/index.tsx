@@ -1,17 +1,24 @@
-import React, { ButtonHTMLAttributes } from 'react';
+import React, { FC, ButtonHTMLAttributes } from 'react';
+import { StyledButton, StyledButtonProps } from './styles';
 
-import { Container } from './styles';
-
-export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  label: string;
+export interface ButtonProps
+  extends Omit<
+      ButtonHTMLAttributes<HTMLButtonElement>,
+      'className' | 'variant'
+    >,
+    StyledButtonProps {
+  text: string;
 }
 
-const Button: React.FC<ButtonProps> = ({ label, ...rest }) => {
+export const Button: FC<ButtonProps> = ({
+  text,
+  id = 'button',
+  variant = 'primary',
+  ...rest
+}) => {
   return (
-    <Container type="button" {...rest}>
-      {label}
-    </Container>
+    <StyledButton id={id} variant={variant} {...rest}>
+      <p>{text}</p>
+    </StyledButton>
   );
 };
-
-export { Button };

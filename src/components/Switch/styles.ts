@@ -1,37 +1,55 @@
-import styled, { css } from 'styled-components';
-import tw from 'tailwind.macro';
+import styled from 'styled-components';
 
 import { theme } from '../../theme';
 
-export const Container = styled.div`
-  ${tw`w-24`}
-
+export const Container = styled.div.attrs({
+  className: `w-24`,
+})`
   label {
-    ${tw`h-12 w-full flex items-center cursor-pointer relative rounded-3xl bg-opacity-0 bg-white`}
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 3rem;
     box-shadow: ${theme.shadow.default};
+    background: rgba(255, 255, 255, 0);
+    position: relative;
+    cursor: pointer;
+    border-radius: 1.6rem;
 
     ::after {
-      ${tw`absolute transition-all ease duration-500 rounded-full left-16 w-8 h-8`}
-      content: "";
+      content: '';
+      position: absolute;
+      left: 0.4rem;
+      width: 2.1rem;
+      height: 2.1rem;
+      border-radius: 50%;
       background: ${theme.colors.greyDark};
+      transition: all 0.4s ease;
     }
 
     ::before {
-      ${tw`absolute transition-all ease duration-500 rounded-full bg-opacity-0 w-full h-full`}
-      content: "";
-      background: linear-gradient(330deg, ${theme.colors.greyDark} 0%, ${
-  theme.colors.primary
-} 50%, ${theme.colors.primaryLight} 100%);
+      content: '';
+      width: 100%;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(
+        330deg,
+        ${theme.colors.greyDark} 0%,
+        ${theme.colors.primary} 50%,
+        ${theme.colors.primaryLight} 100%
+      );
+      opacity: 0;
+      transition: all 0.4s ease;
     }
   }
 
   input {
-    ${tw`hidden`}
+    display: none;
 
-    :checked {
-      ~ label {
+    &:checked {
+      & ~ label {
         ::before {
-          ${tw`opacity-100`}
+          opacity: 1;
         }
 
         ::after {
